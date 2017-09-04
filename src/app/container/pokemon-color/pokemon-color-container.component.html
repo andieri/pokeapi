@@ -1,0 +1,8 @@
+<h3>Choose a color:</h3>
+<app-color-selector
+        [availableColorList]="availableColorList$ |async"
+        [selectedColor]="colorId$ | async"
+        (selectColor)="colorSelect($event)"></app-color-selector>
+<app-pokemon-color
+        [pokemonColor]="pokemonColor$ | async">
+</app-pokemon-color>

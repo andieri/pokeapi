@@ -1,0 +1,8 @@
+<p-dataList [value]="pokemonColor.pokemons" [paginator]="true" [rows]="10">
+    <p-header>
+        The choosen color is {{pokemonColor.name}}
+    </p-header>
+    <ng-template let-pokemon let.-i="index" pTemplate="pokemon">
+        <app-pokemon-link [pokemonLink]="pokemon" (getPokemon)="getSelectedPokemon(pokemon)"></app-pokemon-link>
+    </ng-template>
+</p-dataList>
