@@ -19,4 +19,7 @@ export class PokemonDetailComponent implements OnInit {
     ngOnInit() {
     }
 
+    onBackToColorList = () => {
+        this.backToColorList.emit();
+    }
 }

@@ -4,6 +4,7 @@ import {Pokemon} from '../../type/pokemon';
 import * as fromRoot from '../../reducer/main.reducer';
 import {Store} from '@ngrx/store';
 import {Id} from '../../type/external-types';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-pokemon-container',
@@ -16,7 +17,8 @@ export class PokemonContainerComponent implements OnInit {
     currentColor$: Observable<Id>;
     currentColorId: Id;
 
-    constructor(private _store: Store<fromRoot.State>) {
+    constructor(private _store: Store<fromRoot.State>,
+                private _router: Router) {
     }
 
     ngOnInit() {
@@ -25,5 +27,9 @@ export class PokemonContainerComponent implements OnInit {
         this.currentColor$.subscribe(currentColorId => {
             this.currentColorId = currentColorId
         });
+    }
+
+    backToColorList = () => {
+        this._router.navigate(['/pokemon-color/' + this.currentColorId]);
     }
 }

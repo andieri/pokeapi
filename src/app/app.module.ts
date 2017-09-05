@@ -5,7 +5,7 @@ import {HttpModule} from '@angular/http';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {PokemonColorEffects} from './effect/pokemon-color.effects';
-import {DataListModule, DropdownModule} from 'primeng/primeng';
+import {ButtonModule, DataListModule, DropdownModule} from 'primeng/primeng';
 
 import {AppComponent} from './app.component';
 import {PokemonColorContainerComponent} from './container/pokemon-color/pokemon-color-container.component';
@@ -18,6 +18,10 @@ import {initialState, reducers} from './reducer/main.reducer';
 import {PokemonContainerComponent} from './container/pokemon/pokemon-container.component';
 import {PokemonDetailComponent} from './component/pokemon-detail/pokemon-detail.component';
 import {PokemonEffects} from './effect/pokemon.effects';
+import {applicationRouter} from './app.routes';
+import {GetPieceFromStringPipe} from './pipe/getPieceFromString.pipe';
+import {PageNotFoundComponent} from './component/page-not-found/page-not-found.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -27,12 +31,16 @@ import {PokemonEffects} from './effect/pokemon.effects';
         ColorSelectorComponent,
         PokemonLinkComponent,
         PokemonContainerComponent,
-        PokemonDetailComponent
+        PokemonDetailComponent,
+        GetPieceFromStringPipe,
+        PageNotFoundComponent
     ],
     imports: [
+        RouterModule.forRoot(applicationRouter, {enableTracing: false}),
         BrowserModule,
         DropdownModule,
         DataListModule,
+        ButtonModule,
         BrowserAnimationsModule,
         StoreModule.provideStore(reducers, initialState),
         StoreDevtoolsModule.instrumentStore({
