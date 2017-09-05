@@ -1,5 +1,8 @@
 # Pokeapi
 
+This project is an example project for @ngrx and primeng usage. It uses a free online backand API which is http://pokeapi.co/.  
+The detailed documentation of the API is http://pokeapi.co/docsv2/.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
 
 ## Development server
