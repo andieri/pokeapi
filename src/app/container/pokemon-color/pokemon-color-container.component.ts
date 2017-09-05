@@ -2,10 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {PokemonColor} from '../../type/pokemon-color'
 import {Store} from '@ngrx/store';
-import * as fromRoot from '../../reducer/pokemon-color.reducer';
-import {ColorId, Id} from '../../type/external-types';
+import * as fromRoot from '../../reducer/main.reducer';
+import {ColorId} from '../../type/external-types';
 import {ChangeCurrentColor, LoadPokemonColor} from '../../action/pokemon-color.action';
 import {SelectItem} from 'primeng/primeng';
+import {LoadPokemonById} from '../../action/pokemon.action';
 
 @Component({
     selector: 'app-pokemon-color-container',
@@ -31,4 +32,9 @@ export class PokemonColorContainerComponent implements OnInit {
         this._store.dispatch(new LoadPokemonColor(id));
     }
 
+    loadPokemonById(pokemon) {
+        console.log('pokemon color container', pokemon);
+        const id = pokemon.url.split('/')[6];
+        this._store.dispatch(new LoadPokemonById(id));
+    }
 }

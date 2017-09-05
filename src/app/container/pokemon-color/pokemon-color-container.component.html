@@ -4,5 +4,6 @@
         [selectedColor]="colorId$ | async"
         (selectColor)="colorSelect($event)"></app-color-selector>
 <app-pokemon-color
-        [pokemonColor]="pokemonColor$ | async">
+        [pokemonColor]="pokemonColor$ | async"
+        (selectedPokemon)="loadPokemonById($event)">
 </app-pokemon-color>

@@ -14,7 +14,10 @@ import {ColorSelectorComponent} from './component/color-selector/color-selector.
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {PokemonLinkComponent} from './component/pokemon-link/pokemon-link.component';
-import {initialState, reducer} from './reducer/pokemon-color.reducer';
+import {initialState, reducers} from './reducer/main.reducer';
+import {PokemonContainerComponent} from './container/pokemon/pokemon-container.component';
+import {PokemonDetailComponent} from './component/pokemon-detail/pokemon-detail.component';
+import {PokemonEffects} from './effect/pokemon.effects';
 
 @NgModule({
     declarations: [
@@ -22,19 +25,22 @@ import {initialState, reducer} from './reducer/pokemon-color.reducer';
         PokemonColorContainerComponent,
         PokemonColorComponent,
         ColorSelectorComponent,
-        PokemonLinkComponent
+        PokemonLinkComponent,
+        PokemonContainerComponent,
+        PokemonDetailComponent
     ],
     imports: [
         BrowserModule,
         DropdownModule,
         DataListModule,
         BrowserAnimationsModule,
-        StoreModule.provideStore(reducer, initialState),
+        StoreModule.provideStore(reducers, initialState),
         StoreDevtoolsModule.instrumentStore({
             maxAge: 15
         }),
         HttpModule,
         EffectsModule.runAfterBootstrap(PokemonColorEffects),
+        EffectsModule.runAfterBootstrap(PokemonEffects)
     ],
     providers: [],
     bootstrap: [AppComponent]
