@@ -1,28 +1,55 @@
-// Protractor configuration file, see link for more information
-// https://github.com/angular/protractor/blob/master/lib/config.ts
+'use strict';
 
-const { SpecReporter } = require('jasmine-spec-reporter');
+let config = {
+    // set to "custom" instead of cucumber.
+    framework: 'custom',
 
-exports.config = {
-  allScriptsTimeout: 11000,
-  specs: [
-    './e2e/**/*.e2e-spec.ts'
-  ],
-  capabilities: {
-    'browserName': 'chrome'
-  },
-  directConnect: true,
-  baseUrl: 'http://localhost:4200/',
-  framework: 'jasmine',
-  jasmineNodeOpts: {
-    showColors: true,
-    defaultTimeoutInterval: 30000,
-    print: function() {}
-  },
-  onPrepare() {
-    require('ts-node').register({
-      project: 'e2e/tsconfig.e2e.json'
-    });
-    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
-  }
+    // path relative to the current config file
+    frameworkPath: require.resolve('protractor-cucumber-framework'),
+
+    seleniumAddress: 'http://localhost:4444/wd/hub',
+
+    chromeDriver: './selenium/chromedriver',
+
+    capabilities: {
+        'browserName': (process.env.TEST_BROWSER_NAME || 'chrome'),
+        'version': (process.env.TEST_BROWSER_VERSION || 'ANY'),
+        newCommandTimeout: '10000',
+        autoAcceptAlerts: 'true',
+    },
+
+    baseUrl: 'http://localhost:4200/',
+
+    specs: ['./e2e/features/TestFeatureFile.feature'],
+
+// relevant cucumber command line options
+    cucumberOpts: {
+        compiler: "ts:ts-node/register",
+        strict: true,
+        require: ['./e2e/stepDefinitions/{,**/}*.steps.ts', './e2e/support/{,**/}*.po.ts'],
+        format:
+            ['json:e2e/result/test_result.json', 'progress'],
+        tags:
+            ["~@Ignore", "~@Manual"]
+    },
+
+
+    // useAllAngular2AppRoots: true,
+
+    onPrepare:
+
+        function () {
+            let chai = require('chai'),
+                chaiAsPromised = require('chai-as-promised');
+
+            chai.use(chaiAsPromised);
+
+            global.expect = chai.expect;
+            global.browser.ignoreSynchronization = true;
+            global.browser.manage().window().maximize();
+
+        }
+
 };
+
+exports.config = config;

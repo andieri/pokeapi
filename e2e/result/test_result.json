@@ -1,0 +1,66 @@
+[
+  {
+    "description": "Narrative: Test feature for pokemon poc app\nMeta:",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Test Feature",
+    "tags": [],
+    "uri": "C:\\WORK\\ngrx\\poc\\pokeapi\\e2e\\features\\TestFeatureFile.feature",
+    "elements": [
+      {
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "Scenario title. It is the description what it will test. Each scenario must have a unique title. Long title is ok too.",
+        "tags": [
+          {
+            "line": 5,
+            "name": "@interface"
+          }
+        ],
+        "id": "test-feature;scenario-title.-it-is-the-description-what-it-will-test.-each-scenario-must-have-a-unique-title.-long-title-is-ok-too.",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "I enter the url of the page",
+            "result": {
+              "status": "passed",
+              "duration": 1746
+            },
+            "line": 8,
+            "match": {
+              "location": "C:\\WORK\\ngrx\\poc\\pokeapi\\e2e\\stepDefinitions\\initial.steps.ts:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "the page was loaded",
+            "result": {
+              "status": "passed",
+              "duration": 1
+            },
+            "line": 9,
+            "match": {
+              "location": "C:\\WORK\\ngrx\\poc\\pokeapi\\e2e\\stepDefinitions\\initial.steps.ts:15"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "Pokemon color list is initialized",
+            "result": {
+              "status": "passed",
+              "duration": 3
+            },
+            "line": 10,
+            "match": {
+              "location": "C:\\WORK\\ngrx\\poc\\pokeapi\\e2e\\stepDefinitions\\initial.steps.ts:20"
+            }
+          }
+        ]
+      }
+    ],
+    "id": "test-feature"
+  }
+]
